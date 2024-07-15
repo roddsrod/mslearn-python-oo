@@ -1,5 +1,5 @@
 Changes made:
-1. **Consistent naming conventions**: I used consistent naming conventions throughout the code, following PEP 8 style guide.
+1. **Consistent naming conventions**: I used consistent naming conventions throughout the code, following PEP 8 style guide
 2. **Type hints**: I added type hints for function parameters and return types to improve code readability and facilitate static type checking.
 3. **F-strings**: I replaced string formatting with f-strings, which are more readable and efficient.
 4. **Improved comments**: I added comments to explain the purpose of each class, method, and function, making the code easier to understand.

@@ -24,3 +24,4 @@ Key improvements:
 8. Added `if __name__ == "__main__":` to make the script both importable and executable.
 
 This version is more concise, easier to read, and more maintainable while keeping all the core functionality of the original game.
+

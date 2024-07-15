@@ -1,4 +1,4 @@
-Certainly! Below is a detailed, step-by-step explanation of the code execution, describing which line of code runs after each other and how the flow of control moves through the program.
+Step-by-step explanation of the code execution, describing which line of code runs after each other and how the flow of control moves through the program.
 
 ### Explanation of Code Execution Order
 

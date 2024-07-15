@@ -114,4 +114,3 @@ class Game:
 # Create and start the game
 game = Game()
 game.start()
-

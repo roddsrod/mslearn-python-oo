@@ -7,3 +7,4 @@
 * **Main Guard:** Added an `if __name__ == "__main__":` block to ensure the game code only runs when the script is executed directly, not when imported as a module.
 
 These changes improve the code's readability, maintainability, and overall structure while preserving the core functionality of the Rock-Paper-Scissors-Lizard-Spock game. 
+

@@ -75,3 +75,4 @@ class Game:
 if __name__ == "__main__":
     game = Game()  # Create a new game
     game.play()  # Start the game
+

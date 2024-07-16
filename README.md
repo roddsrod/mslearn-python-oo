@@ -57,3 +57,9 @@ Feel inspired? Fork this repository and create your own version of the game. We 
 - The AI language models for their unique improvements
 
 Enjoy exploring the world of AI-enhanced Rock Paper Scissors and happy coding!
+
+---
+
+Another approach:
+
+https://www.youtube.com/watch?v=fn68QNcatfo

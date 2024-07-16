@@ -117,9 +117,7 @@ Step-by-step explanation of the code execution, describing which line of code ru
             - **Line 92**: `resultString = "Winner is {name}".format(name=self.participant.name)` sets winner string to John.
             - **Line 93**: `elif self.participant.points < self.secondParticipant.points:` checks if Jane wins.
             - **Line 94**: `resultString = "Winner is {name}".format(name=self.secondParticipant.name)` sets winner string to Jane.
-            - **Line 95
-
-**: `print(resultString)` prints the result string.
+            - **Line 95**: `print(resultString)` prints the result string.
             - **Line 96**: Returns `None`.
         - **Line 87**: `self.endGame = True` sets `endGame` to `True`.
         - **Line 88**: Returns `None`.

@@ -62,4 +62,4 @@ Enjoy exploring the world of AI-enhanced Rock Paper Scissors and happy coding!
 
 Another approach:
 
-[https://www.youtube.com/watch?v=fn68QNcatfo](https://www.youtube.com/watch?v=fn68QNcatfo)
+[![ROCK PAPER SCISSOR](https://img.youtube.com/vi/fn68QNcatfo/0.jpg)](https://www.youtube.com/watch?v=fn68QNcatfo)

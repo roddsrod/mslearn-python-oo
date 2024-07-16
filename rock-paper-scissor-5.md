@@ -127,3 +127,138 @@ Step-by-step explanation of the code execution, describing which line of code ru
 
 This step-by-step explanation should help you understand the flow of execution in your code. Each line is described in the order it is executed, showing the interactions between methods and classes.
 
+---
+
+Let's break down the logic step-by-step to understand how this code determines that paper beats rock (and other outcomes) using the matrix.
+
+1. Choice Mapping:
+   The `toNumericalChoice` method maps each choice to a number:
+   - rock: 0
+   - paper: 1
+   - scissor: 2
+   - lizard: 3
+   - spock: 4
+
+2. Rules Matrix:
+   The `rules` list is a 5x5 matrix where:
+   - Rows represent the first player's choice
+   - Columns represent the second player's choice
+   - Values in the matrix represent the outcome:
+     - 1: Row player wins
+     - -1: Column player wins
+     - 0: Tie
+
+3. Matrix Structure:
+   ```
+   [
+     [0, -1,  1,  1, -1],  # Rock
+     [1,  0, -1, -1,  1],  # Paper
+     [-1, 1,  0,  1, -1],  # Scissor
+     [-1, 1, -1,  0,  1],  # Lizard
+     [1, -1,  1, -1,  0]   # Spock
+   ]
+   ```
+
+4. Comparison Logic:
+   In `compareChoices(self, p1, p2)`:
+   ```python
+   return self.rules[p1.toNumericalChoice()][p2.toNumericalChoice()]
+   ```
+   This line looks up the result in the matrix using the numerical choices of both players.
+
+5. Example: Paper beats Rock
+   - If p1 chooses Paper (1) and p2 chooses Rock (0):
+   - `p1.toNumericalChoice()` returns 1 (Paper)
+   - `p2.toNumericalChoice()` returns 0 (Rock)
+   - The result is `self.rules`, which is 1
+   - 1 means the row player (p1) wins
+
+6. Matrix Interpretation:
+   - `self.rules = 1`: Paper (row 1) beats Rock (column 0)
+   - `self.rules = -1`: Rock (row 0) loses to Paper (column 1)
+
+This matrix efficiently encodes all possible outcomes:
+- The row index represents the first player's choice
+- The column index represents the second player's choice
+- The value at that position determines the winner
+
+So, by using this matrix and the numerical mapping of choices, the code can quickly determine the outcome of any matchup without needing multiple if-else statements or complex logic. It's a clever and efficient way to implement the rules of the game.
+
+---
+
+The code doesn't inherently "know" that rows represent the first player's choice and columns represent the second player's choice. This interpretation is established by the way the `compareChoices` method uses the matrix. Let's break it down:
+
+1. The key is in this line of the `compareChoices` method:
+
+   ```python
+   return self.rules[p1.toNumericalChoice()][p2.toNumericalChoice()]
+   ```
+
+2. Here's how this line works:
+   - `p1.toNumericalChoice()` is used as the first index (row)
+   - `p2.toNumericalChoice()` is used as the second index (column)
+
+3. In Python, when accessing a 2D list (like our `rules` matrix), the first index always refers to the row, and the second index refers to the column.
+
+4. So, by putting `p1`'s choice first and `p2`'s choice second in the indexing, the programmer has defined that:
+   - `p1`'s choice corresponds to the row
+   - `p2`'s choice corresponds to the column
+
+5. This order in the `compareChoices` method is what establishes the interpretation of the matrix.
+
+6. If the programmer had written it the other way around:
+   ```python
+   return self.rules[p2.toNumericalChoice()][p1.toNumericalChoice()]
+   ```
+   Then the interpretation would be reversed: columns would represent the first player's choice and rows the second player's choice.
+
+7. The matrix itself is symmetrical in its logic (just with inverted values), so it would work either way. The specific implementation in `compareChoices` is what defines how we interpret the rows and columns.
+
+This is a great example of how the meaning of data structures in programming often comes from how they are used, not just from their inherent structure. The matrix itself doesn't have any inherent "first player" or "second player" meaning; that meaning is imposed by how the `compareChoices` method uses it.
+
+---
+
+The association between `p1`, `p2` and `participant`, `secondParticipant` is not explicitly defined in the code shown, but it is implied through the way the `Game` class uses the `GameRound` class. Let's break this down:
+
+1. In the `Game` class:
+   ```python
+   def __init__(self):
+       self.participant = Participant("John")
+       self.secondParticipant = Participant("Jane")
+   ```
+   Here, two `Participant` objects are created.
+
+2. In the `Game.start()` method:
+   ```python
+   def start(self):
+       while not self.endGame:
+           GameRound(self.participant, self.secondParticipant)
+           self.checkEndCondition()
+   ```
+   A `GameRound` is created with `self.participant` and `self.secondParticipant` as arguments.
+
+3. In the `GameRound` class:
+   ```python
+   def __init__(self, p1, p2):
+       # ... other code ...
+       p1.choose()
+       p2.choose()
+       result = self.compareChoices(p1, p2)
+   ```
+   The `GameRound` constructor takes two parameters, `p1` and `p2`.
+
+4. The association:
+   - When `GameRound(self.participant, self.secondParticipant)` is called in `Game.start()`:
+     - `self.participant` becomes `p1` in the `GameRound`
+     - `self.secondParticipant` becomes `p2` in the `GameRound`
+
+So, while it's not explicitly stated in the code, the association is:
+- `p1` corresponds to `self.participant` (John)
+- `p2` corresponds to `self.secondParticipant` (Jane)
+
+This association is maintained throughout the game because:
+1. The `Game` object is created once at the start.
+2. The same `participant` and `secondParticipant` objects are used for each new `GameRound`.
+3. These objects are consistently passed in the same order to `GameRound`.
+
+It's worth noting that this association is based on the order of arguments when creating a `GameRound`. If the order were switched (e.g., `GameRound(self.secondParticipant, self.participant)`), then the association would be reversed. The code relies on consistent ordering to maintain the correct association between players and their roles in each round.

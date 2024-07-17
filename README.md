@@ -8,6 +8,7 @@ We started with the original Python code for Rock Paper Scissors from Microsoft 
 
 ## AI Models Featured
 
+- Claude
 - ChatGPT
 - Gemini
 - Llama3
